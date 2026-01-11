@@ -20,3 +20,6 @@ run = [
 
 env.RUSTFLAGS = "-Awarnings -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=unwind -Zpanic_abort_tests"
 env.RUSTDOCFLAGS = "-Awarnings -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=unwind -Zpanic_abort_tests"
+
+[tools]
+cargo-binstall = "latest"
