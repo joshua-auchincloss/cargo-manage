@@ -53,33 +53,6 @@ jobs:
         run: |
           cargo nextest run --all-features --profile ci
 
-      - name: Restore Fuzz Corpus
-        if: ${{ matrix.runner == 'ubuntu-latest' }}
-        uses: actions/cache/restore@v5
-        with:
-          path: fuzz/corpus
-          key: fuzz-corpus-${{ runner.os }}-${{ github.sha }}
-          restore-keys: |
-            fuzz-corpus-${{ runner.os }}-
-
-      - name: Fuzz Tests
-        if: ${{ matrix.runner == 'ubuntu-latest' }}
-        run: |
-          mise run fuzz-test
-
-      - name: Save Fuzz Corpus
-        if: ${{ matrix.runner == 'ubuntu-latest' && github.ref == 'refs/heads/main' }}
-        uses: actions/cache/save@v5
-        with:
-          path: fuzz/corpus
-          key: fuzz-corpus-${{ runner.os }}-${{ github.sha }}
-
-      - name: Upload snapshots of failed tests
-        if: ${{ failure() && steps.cargo_test.outcome == 'failure' }}
-        uses: actions/upload-artifact@v6
-        with:
-          name: failed-snapshots
-          path: "**/snapshots/*.snap.new"
 
   coverage:
     name: Coverage

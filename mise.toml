@@ -1,0 +1,22 @@
+[tasks.junit]
+run = [
+    'if [ "$NEXTEST_PROFILE" = "ci" ]; then cp target/nextest/ci/junit.xml ./junit.xml; else cp target/nextest/default/junit.xml ./junit.xml; fi'
+]
+
+
+[tasks.test]
+run = [
+    "cargo nextest run",
+    { task = "junit" },
+]
+
+
+[tasks.coverage]
+run = [
+    "mkdir ./coverage || true",
+    "cargo +nightly llvm-cov nextest --all-features --codecov --output-path ./coverage/lcov.info --ignore-filename-regex '/.cargo/registry/|/tests/'",
+    { task = "junit" },
+]
+
+env.RUSTFLAGS = "-Awarnings -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=unwind -Zpanic_abort_tests"
+env.RUSTDOCFLAGS = "-Awarnings -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=unwind -Zpanic_abort_tests"

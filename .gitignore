@@ -13,6 +13,9 @@ mutants.out.old/
 
 test-results/
 
+/coverage
+
+
 .facts.db
 !e2e/src/target/
 review/

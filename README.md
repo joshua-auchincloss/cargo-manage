@@ -1,5 +1,9 @@
 # cargo-manage
 
+[![Crates.io](https://img.shields.io/crates/v/synkit?style=flat-square)](https://crates.io/crates/cargo-manage)
+[![CI](https://img.shields.io/github/actions/workflow/status/joshua-auchincloss/cargo-manage/test.yaml?style=flat-square)](https://github.com/joshua-auchincloss/cargo-manage/actions)
+[![codecov](https://codecov.io/gh/joshua-auchincloss/cargo-manage/graph/badge.svg)](https://codecov.io/gh/joshua-auchincloss/cargo-manage)
+
 Manage Cargo.toml dependencies across Rust workspaces.
 
 ## Installation
