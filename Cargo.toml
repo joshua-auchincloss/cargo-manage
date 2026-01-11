@@ -1,0 +1,25 @@
+[package]
+name = "cargo-manage"
+version = "0.1.0"
+edition = "2024"
+description = "Manage Cargo.toml dependencies across Rust workspaces"
+authors = ["Joshua Auchincloss <joshua.auchincloss@proton.me>"]
+rust-version = "1.85"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["cargo", "workspace", "dependencies", "toml", "cli"]
+categories = ["development-tools::cargo-plugins", "command-line-utilities"]
+repository = "https://github.com/joshua-auchincloss/cargo-manage"
+
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+toml_edit = "0.23"
+walkdir = "2"
+chrono = "0.4"
+
+[dev-dependencies]
+tempfile = "3"

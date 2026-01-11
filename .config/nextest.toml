@@ -1,0 +1,11 @@
+[profile.default]
+test-threads = "num-cpus"
+fail-fast = false
+slow-timeout = "30s"
+
+[profile.ci]
+retries = { backoff = "exponential", count = 3, delay = "5s" }
+slow-timeout = "5m"
+
+[profile.ci.junit]
+path = "junit.xml"
