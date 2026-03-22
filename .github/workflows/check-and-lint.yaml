@@ -30,7 +30,7 @@ jobs:
           toolchain: nightly
           components: rustfmt clippy
 
-      - uses: j178/prek-action@v1
+      - uses: j178/prek-action@v2
 
   check:
     name: Check
